@@ -10,7 +10,9 @@ Select OS only - choose Ubuntu 16.04 LTS
 2. Click on Networking tab
 3. Add a new custom firewall with Application -> Custom, Protocol -> TCP, and Port range -> 2200
 ##### D. Downloading SSH key
- 1. [Download default SSH key pair](https://lightsail.aws.amazon.com/ls/webapp/account/keys)
+ 1. [Download default SSH key pair](https://lightsail.aws.amazon.com/ls/webapp/account/keys) is downloaded as *LightsailDefaultPrivateKey-ap-south-1.pem*
  2. Store the key under ~/.ssh folder in your **LOCAL** machine.
- 
+##### E. SSHing to the Amazon Lightsail instance
+1. Open terminal
+2. Enter `$ ssh -i ~/.ssh/LightsailDefaultPrivateKey-ap-south-1.pem ubuntu@PUBLIC_IP` This will log you into the Amazon Lightsail instance.
 
