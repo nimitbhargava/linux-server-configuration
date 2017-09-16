@@ -79,4 +79,28 @@ ubuntu@ip-172-26-15-86:~$ sudo apt-get install python-pip
 ubuntu@ip-172-26-15-86:~$ sudo pip install Flask==0.9
 ubuntu@ip-172-26-15-86:~$ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils requests
 ```
+##### Q. Clone the application files
+1. `ubuntu@ip-172-26-15-86:~$ cd /var/www/`
+2. `ubuntu@ip-172-26-15-86:/var/www$ sudo git clone https://github.com/nimitbhargava/open-catalog.git project`
+3. Create WSGI file
+```
+ubuntu@ip-172-26-15-86:/var/www$ cd project/
+ubuntu@ip-172-26-15-86:/var/www/project$ sudo nano catalog.wsgi
+```
+Content for catalog.wsgi
+```
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0, "/var/www/project/")
+
+from application import app as application
+application.secret_key = 'ultra_secret_key'
+```
+##### R. Change the engine inside the .py files(`application.py`, `database_setup.py`, `lotsofcategoryanditem.py`) to `engine = create_engine('postgresql://catalog:password@localhost/catdb')`
+##### S. Seed the database
+```
+ubuntu@ip-172-26-15-86:/var/www/project$ python database_setup.py
+ubuntu@ip-172-26-15-86:/var/www/project$ python lotsofcategoryanditem.py
+```
 
