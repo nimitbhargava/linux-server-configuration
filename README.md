@@ -1,5 +1,12 @@
 # linux-server-configuration
 
+### Project Overview
+> A baseline installation of a linux server and preparing it to host our web applications, securing it from a number of attack vectors, installing and configuring a database server and deploying the Item Catalog application onto it.
+
+* Public IP Address: 13.126.16.6
+* Accessible SSH port: 2200
+
+
 ### Steps to set up linux server and configure it
 
 ##### A. Sign up for [Amazon Lightsail](https://lightsail.aws.amazon.com) account.
@@ -153,3 +160,10 @@ Job for apache2.service failed because the control process exited with error cod
 ```
 
 If you get this error, you need to reinstall apache2 Source: [https://askubuntu.com/a/746206/587391](https://askubuntu.com/a/746206/587391)
+
+### References
+- Stackoverflow community.<br>
+- Flask documentation.<br>
+- Python documentation.<br>
+- Slack for FSND
+- Udacity
