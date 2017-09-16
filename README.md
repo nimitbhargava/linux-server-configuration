@@ -15,4 +15,16 @@ Select OS only - choose Ubuntu 16.04 LTS
 ##### E. SSHing to the Amazon Lightsail instance
 1. Open terminal
 2. Enter `$ ssh -i ~/.ssh/LightsailDefaultPrivateKey-ap-south-1.pem ubuntu@PUBLIC_IP` This will log you into the Amazon Lightsail instance.
+##### F. Create a new user named grader and grant them sudo permissions
+1. `ubuntu@ip-172-26-15-86:~$ sudo adduser grader`. Remember the password as you will need it later to login to grader user. 
+2. `ubuntu@ip-172-26-15-86:~$ sudo nano /etc/sudoers.d/grader` -> Add `grader ALL=(ALL:ALL) ALL` and save
+##### G. Generating and setting SSH keys for grader user
+On you **LOCAL** machine terminal enter `ssh-keygen`. And save the public/private keys to ~/.ssh on local machine
+##### H. Deploy SSH public key on Development Environment
+1. `ubuntu@ip-172-26-15-86:~$ su - grader`
+2. `grader@ip-172-26-15-86:~$ nano .ssh/authorized_keys` Copy the grader public key generated at ~/.ssh and copy the content of they public key to .ssh/authorized_keys
+3. Change permissions `grader@ip-172-26-15-86:~$ chmod 700 .ssh; chmod 644 .ssh/authorized_keys`
+4. Restart the service `grader@ip-172-26-15-86:~$ sudo service ssh restart`
+
+
 
