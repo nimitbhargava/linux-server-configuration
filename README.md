@@ -49,3 +49,6 @@ and modify to
 PermitRootLogin no
 PasswordAuthentication no
 ```
+##### M. Making the applications up-to-date
+`ubuntu@ip-172-26-15-86:~$ sudo apt-get update` and then `ubuntu@ip-172-26-15-86:~$ sudo apt-get upgrade`
+
