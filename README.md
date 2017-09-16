@@ -29,7 +29,8 @@ On you **LOCAL** machine terminal enter `ssh-keygen`. And save the public/privat
 ##### I. Change the SSH port from 22 to 2200
 1. `ubuntu@ip-172-26-15-86:~$ sudo nano /etc/ssh/sshd_config` Modify Port 22 to Port 2200
 2. Restart the service `ubuntu@ip-172-26-15-86:~$ sudo service ssh restart`
-Now you can access the instance via `ssh -i ~/.ssh/LightsailDefaultPrivateKey-ap-south-1.pem -p 2200 ubuntu@13.126.75.183` from your local machine terminal. 
+- Now you can access the ubuntu instance via `ssh -i ~/.ssh/LightsailDefaultPrivateKey-ap-south-1.pem -p 2200 ubuntu@13.126.75.183` from your local machine terminal. 
+- Now you can access the grader instance via `$ ssh -i ~/.ssh/grader.rsa -p 2200 grader@13.126.75.183` from your local machine terminal. 
 ##### J. Configure the Uncomplicated Firewall (UFW)
 Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
 ```
