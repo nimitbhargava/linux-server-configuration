@@ -42,5 +42,10 @@ sudo ufw enable
 Check if firewall is enabled by `sudo ufw status`
 ##### K. Configure the Development Environment (instance) timezone to UTC
 Configure the time zone `ubuntu@ip-172-26-15-86:~$ sudo dpkg-reconfigure tzdata` -> None of these -> UTC
-
-
+##### L. Disable Root login and Enforce key-based authentication
+`ubuntu@ip-172-26-15-86:~$ sudo nano /etc/ssh/sshd_config` 
+and modify to 
+```
+PermitRootLogin no
+PasswordAuthentication no
+```
