@@ -103,4 +103,53 @@ application.secret_key = 'ultra_secret_key'
 ubuntu@ip-172-26-15-86:/var/www/project$ python database_setup.py
 ubuntu@ip-172-26-15-86:/var/www/project$ python lotsofcategoryanditem.py
 ```
+##### T. Edit the Virtual File
+Go to `ubuntu@ip-172-26-15-86:/var/www/project$ sudo nano /etc/apache2/sites-available/000-default.conf`
 
+Modify it to 
+```
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        ServerName http://13.126.75.183/
+
+        ServerAdmin webmaster@localhost
+        #DocumentRoot /var/www/html
+
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+        
+        WSGIScriptAlias / /var/www/project/catalog.wsgi
+        <Directory /var/www/project/>
+            Order allow,deny
+            Allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
+##### U. Restart Apache to launch
+```
+ubuntu@ip-172-26-15-86:~$ sudo service apache2 restart
+Job for apache2.service failed because the control process exited with error code. See "systemctl status apache2.service" and "journalctl -xe" for details.
+```
+
+If you get this error, you need to reinstall apache2 Source: [https://askubuntu.com/a/746206/587391](https://askubuntu.com/a/746206/587391)
