@@ -29,6 +29,15 @@ On you **LOCAL** machine terminal enter `ssh-keygen`. And save the public/privat
 1. `ubuntu@ip-172-26-15-86:~$ sudo nano /etc/ssh/sshd_config` Modify Port 22 to Port 2200
 2. Restart the service `ubuntu@ip-172-26-15-86:~$ sudo service ssh restart`
 Now you can access the instance via `ssh -i ~/.ssh/LightsailDefaultPrivateKey-ap-south-1.pem -p 2200 ubuntu@13.126.75.183` from your local machine terminal. 
+##### J. Configure the Uncomplicated Firewall (UFW)
+Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
+```
+sudo ufw allow 2200/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 123/udp
+sudo ufw enable 
+```
+Check if firewall is enabled by `sudo ufw status`
 
 
 
