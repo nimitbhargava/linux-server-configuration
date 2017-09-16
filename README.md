@@ -51,4 +51,32 @@ PasswordAuthentication no
 ```
 ##### M. Making the applications up-to-date
 `ubuntu@ip-172-26-15-86:~$ sudo apt-get update` and then `ubuntu@ip-172-26-15-86:~$ sudo apt-get upgrade`
+##### N. Install Apache2, mod_wsgi and git
+```
+ubuntu@ip-172-26-15-86:~$ sudo apt-get install apache2
+ubuntu@ip-172-26-15-86:~$ sudo apt-get install apache2 libapache2-mod-wsgi git` and enable mod_wsgi `ubuntu@ip-172-26-15-86:~$ sudo a2enmod wsgi`
+```
+##### O. Install and Configure PostgreSQL
+1. `ubuntu@ip-172-26-15-86:~$ sudo apt-get install postgresql postgresql-contrib libpq-dev python-dev`
+2. Login as postgres User(Default user), and get into psql shell 
+```
+ubuntu@ip-172-26-15-86:~$ sudo su - postgres
+postgres@ip-172-26-15-86:~$ psql
+```
+3. Create new User named *catalog*, a new Database *catdb*, and Connect to the Database
+```
+postgres=# CREATE USER catalog WITH PASSWORD 'password';
+postgres=# CREATE DATABASE catdb WITH OWNER catalog;
+postgres=# \c catdb
+```
+4. Revoke all rights from public, and allow only catalog to perform transactions
+```
+catdb=# REVOKE ALL ON SCHEMA public FROM public; GRANT ALL ON SCHEMA public TO catalog;
+```
+##### P. Install python app dependencies
+```
+ubuntu@ip-172-26-15-86:~$ sudo apt-get install python-pip
+ubuntu@ip-172-26-15-86:~$ sudo pip install Flask==0.9
+ubuntu@ip-172-26-15-86:~$ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils requests
+```
 
