@@ -25,6 +25,10 @@ On you **LOCAL** machine terminal enter `ssh-keygen`. And save the public/privat
 2. `grader@ip-172-26-15-86:~$ nano .ssh/authorized_keys` Copy the grader public key generated at ~/.ssh and copy the content of they public key to .ssh/authorized_keys
 3. Change permissions `grader@ip-172-26-15-86:~$ chmod 700 .ssh; chmod 644 .ssh/authorized_keys`
 4. Restart the service `grader@ip-172-26-15-86:~$ sudo service ssh restart`
+##### I. Change the SSH port from 22 to 2200
+1. `ubuntu@ip-172-26-15-86:~$ sudo nano /etc/ssh/sshd_config` Modify Port 22 to Port 2200
+2. Restart the service `ubuntu@ip-172-26-15-86:~$ sudo service ssh restart`
+Now you can access the instance via `ssh -i ~/.ssh/LightsailDefaultPrivateKey-ap-south-1.pem -p 2200 ubuntu@13.126.75.183` from your local machine terminal. 
 
 
 
